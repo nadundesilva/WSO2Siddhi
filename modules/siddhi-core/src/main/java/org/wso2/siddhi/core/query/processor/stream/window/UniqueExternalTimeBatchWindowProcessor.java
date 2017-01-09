@@ -18,6 +18,9 @@
 
 package org.wso2.siddhi.core.query.processor.stream.window;
 
+import org.wso2.siddhi.annotation.Description;
+import org.wso2.siddhi.annotation.Parameter;
+import org.wso2.siddhi.annotation.util.DataType;
 import org.wso2.siddhi.core.config.ExecutionPlanContext;
 import org.wso2.siddhi.core.event.ComplexEvent;
 import org.wso2.siddhi.core.event.ComplexEventChunk;
@@ -43,6 +46,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+@Description("A batch (tumbling) time window based on external time that holds latest unique events that arrive during the windowTime periods, and gets updated for each windowTime.")
+@Parameter(name = "attribute", type = {DataType.STRING})
+@Parameter(name = "timestamp", type = {DataType.LONG})
+@Parameter(name = "windowTime", type = {DataType.INT, DataType.LONG, DataType.TIME})
+@Parameter(name = "startTime", type = {DataType.INT, DataType.LONG, DataType.TIME}, optional = true)
+@Parameter(name = "timeout", type = {DataType.INT, DataType.LONG, DataType.TIME}, optional = true)
+@Parameter(name = "replaceTimestampWithBatchEndTime", type = {DataType.BOOL}, optional = true)
 public class UniqueExternalTimeBatchWindowProcessor extends WindowProcessor implements SchedulingProcessor, FindableProcessor {
     private Map<Object, StreamEvent> currentEvents = new LinkedHashMap<Object, StreamEvent>();
     private Map<Object, StreamEvent> expiredEvents = null;

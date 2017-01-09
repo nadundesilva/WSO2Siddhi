@@ -17,6 +17,10 @@
  */
 package org.wso2.siddhi.core.query.selector.attribute.aggregator;
 
+import org.wso2.siddhi.annotation.Description;
+import org.wso2.siddhi.annotation.Parameter;
+import org.wso2.siddhi.annotation.Return;
+import org.wso2.siddhi.annotation.util.DataType;
 import org.wso2.siddhi.core.config.ExecutionPlanContext;
 import org.wso2.siddhi.core.exception.OperationNotSupportedException;
 import org.wso2.siddhi.core.executor.ExpressionExecutor;
@@ -27,6 +31,9 @@ import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+@Description("Returns the maximum value for all the events.")
+@Parameter(name = "attribute", type = {DataType.INT, DataType.LONG, DataType.DOUBLE, DataType.FLOAT})
+@Return(type = {DataType.INT, DataType.LONG, DataType.DOUBLE, DataType.FLOAT})
 public class MaxAttributeAggregator extends AttributeAggregator {
 
     private MaxAttributeAggregator maxOutputAttributeAggregator;

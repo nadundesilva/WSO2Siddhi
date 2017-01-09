@@ -19,6 +19,9 @@ package org.wso2.siddhi.core.query.processor.stream.window;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import org.wso2.siddhi.annotation.Description;
+import org.wso2.siddhi.annotation.Parameter;
+import org.wso2.siddhi.annotation.util.DataType;
 import org.wso2.siddhi.core.config.ExecutionPlanContext;
 import org.wso2.siddhi.core.event.ComplexEventChunk;
 import org.wso2.siddhi.core.event.stream.StreamEvent;
@@ -27,6 +30,8 @@ import org.wso2.siddhi.core.executor.ConstantExpressionExecutor;
 import org.wso2.siddhi.core.executor.ExpressionExecutor;
 import org.wso2.siddhi.core.query.processor.Processor;
 
+@Description("This window returns events processed periodically as the output in time-repeating patterns, triggered based on time passing.")
+@Parameter(name = "cronExpression", type = {DataType.STRING})
 public class CronWindowProcessor extends WindowProcessor implements Job {
 
     private ComplexEventChunk<StreamEvent> currentEventChunk = new ComplexEventChunk<StreamEvent>(false);

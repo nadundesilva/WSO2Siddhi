@@ -17,6 +17,10 @@
  */
 package org.wso2.siddhi.core.query.selector.attribute.aggregator;
 
+import org.wso2.siddhi.annotation.Description;
+import org.wso2.siddhi.annotation.Parameter;
+import org.wso2.siddhi.annotation.Return;
+import org.wso2.siddhi.annotation.util.DataType;
 import org.wso2.siddhi.core.config.ExecutionPlanContext;
 import org.wso2.siddhi.core.exception.OperationNotSupportedException;
 import org.wso2.siddhi.core.executor.ExpressionExecutor;
@@ -24,6 +28,9 @@ import org.wso2.siddhi.query.api.definition.Attribute;
 
 import java.util.Arrays;
 
+@Description("This is the attribute aggregator to store the minimum value for a given attribute throughout the lifetime of the query regardless of any windows in-front.")
+@Parameter(name = "attribute", type = {DataType.INT, DataType.LONG, DataType.DOUBLE, DataType.FLOAT})
+@Return(type = {DataType.INT, DataType.LONG, DataType.DOUBLE, DataType.FLOAT})
 public class MinForeverAttributeAggregator extends AttributeAggregator {
 
     private MinForeverAttributeAggregator minForeverAttributeAggregator;

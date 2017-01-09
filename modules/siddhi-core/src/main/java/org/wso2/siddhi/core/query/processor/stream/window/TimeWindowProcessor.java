@@ -17,6 +17,9 @@
  */
 package org.wso2.siddhi.core.query.processor.stream.window;
 
+import org.wso2.siddhi.annotation.Description;
+import org.wso2.siddhi.annotation.Parameter;
+import org.wso2.siddhi.annotation.util.DataType;
 import org.wso2.siddhi.core.config.ExecutionPlanContext;
 import org.wso2.siddhi.core.event.ComplexEventChunk;
 import org.wso2.siddhi.core.event.state.StateEvent;
@@ -39,6 +42,8 @@ import org.wso2.siddhi.query.api.expression.Expression;
 import java.util.List;
 import java.util.Map;
 
+@Description("A sliding time window that holds events that arrived during the last windowTime period at a given time, and gets updated for each event arrival and expiry.")
+@Parameter(name = "windowTime", type = {DataType.INT, DataType.LONG, DataType.TIME})
 public class TimeWindowProcessor extends WindowProcessor implements SchedulingProcessor, FindableProcessor {
 
     private long timeInMilliSeconds;
